@@ -88,16 +88,16 @@ public class Llama3 {
         conversationTokens.add(chatFormat.beginOfText);
         if (options.systemPrompt() != null) {
             conversationTokens.addAll(chatFormat.encodeMessage(new ChatFormat.Message(ChatFormat.Role.SYSTEM, options.systemPrompt())));
+        } else {
+            conversationTokens.addAll(chatFormat.encodeMessage(new ChatFormat.Message(ChatFormat.Role.SYSTEM, """
+                    Du bist ein erfahrener Linguist. Du arbeitest sorgfaelltig die folgende Aufgabe ab:
+                    Verzichte auf Erklaerungen!
+                    Filtere alle Wörter, um nur die Nomen (Substantive) herauszufinden.
+                    Richte eine JSON-Liste mit den Nomen ein.
+                    Gib die JSON-Liste als Ausgabe aus.
+                    Der Text:
+                    """)));
         }
-        conversationTokens.addAll(chatFormat.encodeMessage(new ChatFormat.Message(ChatFormat.Role.SYSTEM, """
-                Du bist ein erfahrener Linguist. Du arbeitest sorgfaelltig die folgende Aufgabe ab:
-                Verzichte auf Erklaerungen!
-                Filtere alle Wörter, um nur die Nomen (Substantive) herauszufinden.
-                Richte eine JSON-Liste mit den Nomen ein.
-                Gib die JSON-Liste als Ausgabe aus.
-                Der Text:
-                """)));
-
 
         int startPosition = 0;
         Scanner in = new Scanner(System.in);
