@@ -1,0 +1,9 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+/.idea/
+/llama3.java.iml
+/Llama-3.2-3B-Instruct-Q4_0.gguf
+/Meta-Llama-3.1-8B-Instruct-Q4_0.gguf
